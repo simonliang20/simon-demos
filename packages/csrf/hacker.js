@@ -5,8 +5,20 @@ app.set('view engine', 'ejs');
 
 const port = 3002
 
-app.get('/', function (req, res) {
-  res.render('hacker')
+app.get('/img', function (req, res) {
+  res.render('img')
+});
+
+app.get('/link', function (req, res) {
+  res.render('link')
+});
+
+app.get('/form-get', function (req, res) {
+  res.render('form-get')
+});
+
+app.get('/form-post', function (req, res) {
+  res.render('form-post')
 });
 
 app.listen(port, () => {

@@ -2,12 +2,20 @@ const express = require('express')
 
 const app = express()
 
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({ extended: true }))
+
 const port = 3001
 
 // 转账接口
 app.get('/transfer', function (req, res) {
     const msg = `成功向用户${req.query.user}转账${req.query.number}`
     console.log(msg)
+    res.send(msg)
+});
+app.post('/transfer', function (req, res) {
+    const msg = `成功向用户${req.body.user}转账${req.body.number}`
     res.send(msg)
   });
 
@@ -23,9 +31,10 @@ app.get('/cookie', function (req, res) {
     sameSite: 'Strict',
   })
 
+  // 默认sameSite=Lax
   res.cookie('sex', 'man')
 
-  res.send('设置两个cookie成功，第三方网站只会发送cookie: sex=man')
+  res.send('设置两个cookie成功')
 });
 
 app.listen(port, () => {
